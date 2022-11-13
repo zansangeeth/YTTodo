@@ -8,6 +8,10 @@
         <variable
             name="taskEntry"
             type="com.zasa.yttodo.database.TaskEntry" />
+
+        <variable
+            name="clickListener"
+            type="com.zasa.yttodo.ui.task.TaskClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -15,7 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
+        app:cardElevation="4dp"
+        android:onClick="@{() -> clickListener.onClick(taskEntry)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/row_background"

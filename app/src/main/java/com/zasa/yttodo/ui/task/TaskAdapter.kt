@@ -2,6 +2,7 @@ package com.zasa.yttodo.ui.task
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -14,7 +15,7 @@ import kotlin.concurrent.timerTask
  * Created by Sangeeth Amirthanathan
  * on 11/13/2022.
  */
-class TaskAdapter : androidx.recyclerview.widget.ListAdapter<TaskEntry, TaskAdapter.ViewHolder>(TaskDiffCallback) {
+class TaskAdapter(val clickListener: TaskClickListener) : androidx.recyclerview.widget.ListAdapter<TaskEntry, TaskAdapter.ViewHolder>(TaskDiffCallback) {
 
     companion object TaskDiffCallback : DiffUtil.ItemCallback<TaskEntry>(){
         override fun areItemsTheSame(oldItem: TaskEntry, newItem: TaskEntry) = oldItem.id == newItem.id
@@ -22,8 +23,9 @@ class TaskAdapter : androidx.recyclerview.widget.ListAdapter<TaskEntry, TaskAdap
     }
 
     class ViewHolder(val binding: RowLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(taskEntry: TaskEntry) {
+        fun bind(taskEntry: TaskEntry, clickListener: TaskClickListener) {
             binding.taskEntry = taskEntry
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -35,7 +37,11 @@ class TaskAdapter : androidx.recyclerview.widget.ListAdapter<TaskEntry, TaskAdap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current)
+        holder.bind(current, clickListener)
     }
 
+}
+
+class TaskClickListener(val clickListener: (taskEntry : TaskEntry) -> Unit){
+    fun onClick(taskEntry: TaskEntry) = clickListener(taskEntry)
 }
