@@ -1,6 +1,7 @@
 package com.zasa.yttodo.repository
 
 import androidx.lifecycle.LiveData
+import androidx.room.Query
 import com.zasa.yttodo.database.TaskDao
 import com.zasa.yttodo.database.TaskEntry
 
@@ -17,4 +18,8 @@ class TaskRepository(val taskDao: TaskDao) {
         taskDao.deleteAll()
     }
     fun getAllTasks() : LiveData<List<TaskEntry>> = taskDao.getAllTasks()
+    fun getAllPriorityTasks() : LiveData<List<TaskEntry>> = taskDao.getAllPriorityTasks()
+    fun searchDatabase(searhQuery: String) : LiveData<List<TaskEntry>>{
+        return taskDao.searchTasks(searhQuery)
+    }
 }

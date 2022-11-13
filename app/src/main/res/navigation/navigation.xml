@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/taskFragment"
         android:name="com.zasa.yttodo.ui.task.TaskFragment"
-        android:label="fragment_task"
+        android:label="YT ToDo"
         tools:layout="@layout/fragment_task" >
         <action
             android:id="@+id/action_taskFragment_to_addFragment"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/addFragment"
         android:name="com.zasa.yttodo.ui.add.AddFragment"
-        android:label="fragment_add"
+        android:label="Add Task"
         tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addFragment_to_taskFragment"
@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/updateFragment"
         android:name="com.zasa.yttodo.ui.update.UpdateFragment"
-        android:label="fragment_update"
+        android:label="Update Task"
         tools:layout="@layout/fragment_update" >
         <action
             android:id="@+id/action_updateFragment_to_taskFragment"

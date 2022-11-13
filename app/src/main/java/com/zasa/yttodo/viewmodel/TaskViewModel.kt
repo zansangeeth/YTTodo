@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import androidx.room.Query
 import com.zasa.yttodo.database.TaskDatabase
 import com.zasa.yttodo.database.TaskEntry
 import com.zasa.yttodo.repository.TaskRepository
@@ -21,10 +22,12 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     private val repository : TaskRepository
 
     val getAllTasks : LiveData<List<TaskEntry>>
+    val getAllPriorityTasks : LiveData<List<TaskEntry>>
 
     init {
         repository = TaskRepository(taskDao)
         getAllTasks = repository.getAllTasks()
+        getAllPriorityTasks = repository.getAllPriorityTasks()
     }
 
     fun insert(taskEntry: TaskEntry){
@@ -49,6 +52,10 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO){
             repository.deleteAll()
         }
+    }
+
+    fun searchDatabase(searchQuery: String) : LiveData<List<TaskEntry>>{
+        return repository.searchDatabase(searchQuery)
     }
 
 
