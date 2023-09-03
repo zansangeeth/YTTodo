@@ -2,7 +2,7 @@
  
 Sangeeth Amirthanathan
 
-**YT ToDo** is an App that will suggest daily meals with users preferenece (How much of calories they want to gain for a day ?)
+**YT ToDo** is an App that will add, delete, modify and store your todo list
 
 Time spent: **3** day spent in total
 
@@ -33,6 +33,7 @@ The following **required** functionality is completed:
 * [ ] Room
 * [ ] Recycler View
 * [ ] Coroutines
+* [ ] Sqlite
 
 The following **extensions** are implemented:
 
@@ -41,6 +42,7 @@ The following **extensions** are implemented:
 * [ ] User can delete the task
 * [ ] User can delete all tasks
 * [ ] User can sort the task by priority
+* [ ] app will store the data to Room database
 
 
 ## Video Walkthrough
